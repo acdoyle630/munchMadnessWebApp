@@ -1,3 +1,5 @@
+/*jshint esversion: 6*/
+
 const session = require('express-session');
 const express = require('express');
 const app = express();
@@ -10,8 +12,10 @@ const LocalStrategy = require('passport-local').Strategy;
 const { User } = db;
 
 
-//app.use('/api', require('/api'));
+app.use(bodyParser.json({extended: true}));
 
+
+app.use('/api', require('./api'));
 
 app.listen(6969, () =>{
   console.log(`listening on port: ${PORT}`);
