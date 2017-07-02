@@ -6,6 +6,9 @@
 # testing
 /coverage
 
+#key
+/protection
+
 # production
 /build
 
