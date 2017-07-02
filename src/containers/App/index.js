@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles.css';
+import { loadContenders } from '../../action';
+import { connect } from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
 
 class App extends Component {
   constructor(props) {
@@ -50,6 +53,7 @@ class App extends Component {
     }
 
   generateBracket(data){
+    this.props.loadContenders(data)
     let choice = JSON.parse(data.result)
     console.log(choice.name)
     if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth === ""){
@@ -70,6 +74,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.props.contenders)
     console.log(this.state)
     return (
       <div className="App">
@@ -103,4 +108,23 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    contenders : state.restaurants
+  };
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    loadContenders : contenders => {
+      dispatch(loadContenders(contenders))
+    }
+  }
+}
+
+const ConnectedApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+  )(App);
+
+export default ConnectedApp;
