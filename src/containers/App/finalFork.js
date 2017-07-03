@@ -21,8 +21,6 @@ class FinalFork extends Component {
   }
 
   goToChampiondish = () =>{
-    console.log('hit champ')
-    console.log(this.props.winners.leftChamp.name)
     if(this.props.winners.leftChamp.name === undefined || this.props.winners.rightChamp.name === undefined ){
       alert('Choose your contenders')
     }
@@ -51,6 +49,13 @@ class FinalFork extends Component {
   }
 
   render(){
+    if(this.state.champsChosen === true){
+      return(
+        <Redirect to={{
+          pathname : 'championDish'
+        }} />
+        )
+    }
     if(this.props.contenders.current !== "done"){
       return(
         <Redirect to={{
