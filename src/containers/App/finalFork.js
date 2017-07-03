@@ -14,7 +14,22 @@ class FinalFork extends Component {
       second : "",
       third : "",
       fourth : "",
-      searchBar : ""
+      searchBar : "",
+      champsChosen : false
+    }
+
+  }
+
+  goToChampiondish = () =>{
+    console.log('hit champ')
+    console.log(this.props.winners.leftChamp.name)
+    if(this.props.winners.leftChamp.name === undefined || this.props.winners.rightChamp.name === undefined ){
+      alert('Choose your contenders')
+    }
+    else{
+     this.setState({
+      champsChosen : true
+     });
     }
 
   }
@@ -36,8 +51,6 @@ class FinalFork extends Component {
   }
 
   render(){
-    console.log(this.props.contenders)
-    console.log(this.props.winners)
     if(this.props.contenders.current !== "done"){
       return(
         <Redirect to={{
@@ -52,11 +65,8 @@ class FinalFork extends Component {
           <h2>Final Fork</h2>
         </div>
         <div className="App-intro">
-          <form onSubmit ={this.handleSearchSubmit}>
-            <input type = "text" value = {this.state.searchBar} onChange = {this.handleSearchChange} />
-            <button type = "submit"> Find me food
+            <button onClick = {this.goToChampiondish}> Championship!
             </button>
-          </form>
         </div>
         <div className ='forkChoices'>
           <div className = 'left'>
