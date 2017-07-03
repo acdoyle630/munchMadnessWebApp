@@ -69,6 +69,7 @@ class FinalFork extends Component {
             </div>
           </div>
           <div id = 'forkMiddle'>
+            <div id ='nothing'></div>
             <div id = 'forkLeftChamp'>
             {this.props.winners.leftChamp.name}
             </div>
