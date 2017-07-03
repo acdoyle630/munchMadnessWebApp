@@ -24,7 +24,7 @@
   background-color: blue;
 }
 
-.eliteChoices{
+.forkChoices{
   display : flex;
   flex-direction: row;
   justify-content: space-around;

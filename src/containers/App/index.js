@@ -78,7 +78,7 @@ class App extends Component {
     if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== ""){
       return(
         <Redirect to={{
-          pathname : 'eliteAte'
+          pathname : 'finalFork'
         }} />
         )
     }

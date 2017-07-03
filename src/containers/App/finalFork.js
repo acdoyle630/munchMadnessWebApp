@@ -4,7 +4,7 @@ import './styles.css';
 import { connect } from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
-class EliteAte extends Component {
+class FinalFork extends Component {
   constructor(props) {
     super(props);
 
@@ -17,13 +17,37 @@ class EliteAte extends Component {
     }
 
   }
+
+  chooseFirst(){
+    console.log('first')
+  }
+
+  chooseSecond(){
+    console.log('second')
+  }
+
+  chooseThird(){
+    console.log('third')
+  }
+
+  chooseFourth(){
+    console.log('fourth')
+  }
+
   render(){
+    if(this.props.contenders.current !== "done"){
+      return(
+        <Redirect to={{
+          pathname : '/'
+        }} />
+        )
+    }
     console.log(this.props.contenders);
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Elite Ate</h2>
+          <h2>Final Fork</h2>
         </div>
         <div className="App-intro">
           <form onSubmit ={this.handleSearchSubmit}>
@@ -32,22 +56,22 @@ class EliteAte extends Component {
             </button>
           </form>
         </div>
-        <div className ='eliteChoices'>
+        <div className ='forkChoices'>
           <div className = 'left'>
-            <div className = "first">
+            <div className = "first" onClick={this.chooseFirst}>
             {this.props.contenders.first.name}
             </div>
             <p>VS</p>
-            <div className = "second">
+            <div className = "second" onClick={this.chooseSecond}>
             {this.props.contenders.second.name}
             </div>
           </div>
           <div className = 'right'>
-            <div className = "third">
+            <div className = "third" onClick={this.chooseThird}>
             {this.props.contenders.third.name}
             </div>
             <p>VS</p>
-            <div className = "fourth">
+            <div className = "fourth" onClick={this.chooseFourth}>
             {this.props.contenders.fourth.name}
             </div>
           </div>
@@ -72,9 +96,9 @@ const mapStateToProps = (state) => {
   }
 }*/
 
-const ConnectedEliteAteApp = connect(
+const ConnectedFinalForkApp = connect(
   mapStateToProps,
   //mapDispatchToProps
-  )(EliteAte);
+  )(FinalFork);
 
-export default ConnectedEliteAteApp;
+export default ConnectedFinalForkApp;

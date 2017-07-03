@@ -9,7 +9,7 @@ import {
 import ReduxThunk from 'redux-thunk';
 import reducers  from './reducers';
 import App from './containers/App';
-import eliteAte from './containers/App/eliteAte';
+import finalFork from './containers/App/finalFork';
 import './index.css';
 
 const store = createStore(
@@ -22,7 +22,7 @@ ReactDOM.render(
     <Router>
       <div>
         <Route exact path = "/" component={App}/>
-        <Route path = "/eliteAte" component={eliteAte}/>
+        <Route path = "/finalFork" component={finalFork}/>
       </div>
     </Router>
   </Provider>,
