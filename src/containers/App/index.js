@@ -74,6 +74,13 @@ class App extends Component {
 
 
   render() {
+    if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== ""){
+      return(
+        <Redirect to={{
+          pathname : 'eliteAte'
+        }} />
+        )
+    }
     console.log(this.props.contenders)
     console.log(this.state)
     return (

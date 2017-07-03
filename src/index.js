@@ -9,6 +9,7 @@ import {
 import ReduxThunk from 'redux-thunk';
 import reducers  from './reducers';
 import App from './containers/App';
+import eliteAte from './containers/App/eliteAte';
 import './index.css';
 
 const store = createStore(
@@ -20,7 +21,8 @@ ReactDOM.render(
   <Provider store={store}>
     <Router>
       <div>
-        <Route exact path="/" component={App}/>
+        <Route exact path = "/" component={App}/>
+        <Route path = "/eliteAte" component={eliteAte}/>
       </div>
     </Router>
   </Provider>,
