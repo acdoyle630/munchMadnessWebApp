@@ -21,7 +21,8 @@ function searchYelp (serachCriteria)  {
     const client = yelp.client(response.jsonBody.access_token);
 
     client.search(serachCriteria).then(response => {
-      const firstResult = response.jsonBody.businesses[0];
+      const resultLength = response.jsonBody.businesses.length;
+      const firstResult = response.jsonBody.businesses[Math.floor(Math.random() * resultLength)];
       const prettyJson = JSON.stringify(firstResult, null, 4);
       result = prettyJson;
       console.log(result);
