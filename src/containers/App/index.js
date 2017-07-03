@@ -14,7 +14,8 @@ class App extends Component {
       second : "",
       third : "",
       fourth : "",
-      searchBar : ""
+      searchBar : "",
+      id : 1
     }
 
   }
@@ -42,10 +43,8 @@ class App extends Component {
         },
         body: JSON.stringify(restaurant)
       }).then(response =>{
-        console.log(response)
         return(response.json())
       }).then(data => {
-        console.log(data)
         this.generateBracket(data)
       }).catch(err => {
         throw err;
@@ -53,9 +52,10 @@ class App extends Component {
     }
 
   generateBracket(data){
-    this.props.loadContenders(data)
     let choice = JSON.parse(data.result)
-    console.log(choice.name)
+    choice.id = this.state.id
+    this.props.loadContenders(choice)
+    this.state.id++
     if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth === ""){
       this.setState({fourth: choice.name})
     }
@@ -74,7 +74,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.props.contenders);
     if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== ""){
       return(
         <Redirect to={{
@@ -116,7 +115,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    contenders : state.restaurants
+    contenders : state.finalFork
   };
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles.css';
 import { connect } from 'react-redux';
+import { loadChampionDish } from '../../action';
 import {Link, Redirect} from 'react-router-dom';
 
 class FinalFork extends Component {
@@ -18,23 +19,25 @@ class FinalFork extends Component {
 
   }
 
-  chooseFirst(){
-    console.log('first')
+  chooseFirst = () => {
+    this.props.loadChampionDish(this.props.contenders.first)
   }
 
-  chooseSecond(){
-    console.log('second')
+  chooseSecond = () => {
+    this.props.loadChampionDish(this.props.contenders.second)
   }
 
-  chooseThird(){
-    console.log('third')
+  chooseThird = () => {
+    this.props.loadChampionDish(this.props.contenders.third)
   }
 
-  chooseFourth(){
-    console.log('fourth')
+  chooseFourth = () => {
+    this.props.loadChampionDish(this.props.contenders.fourth)
   }
 
   render(){
+    console.log(this.props.contenders)
+    console.log(this.props.winners)
     if(this.props.contenders.current !== "done"){
       return(
         <Redirect to={{
@@ -42,7 +45,6 @@ class FinalFork extends Component {
         }} />
         )
     }
-    console.log(this.props.contenders);
     return (
       <div className="App">
         <div className="App-header">
@@ -66,6 +68,14 @@ class FinalFork extends Component {
             {this.props.contenders.second.name}
             </div>
           </div>
+          <div id = 'forkMiddle'>
+            <div id = 'forkLeftChamp'>
+            {this.props.winners.leftChamp.name}
+            </div>
+            <div id = 'forkRightChamp'>
+            {this.props.winners.rightChamp.name}
+            </div>
+          </div>
           <div className = 'right'>
             <div className = "third" onClick={this.chooseThird}>
             {this.props.contenders.third.name}
@@ -84,21 +94,22 @@ class FinalFork extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    contenders : state.restaurants
+    contenders : state.finalFork,
+    winners : state.championDish
   };
 }
 
-/*const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    loadContenders : contenders => {
-      dispatch(loadContenders(contenders))
+    loadChampionDish : contenders => {
+      dispatch(loadChampionDish(contenders))
     }
   }
-}*/
+}
 
 const ConnectedFinalForkApp = connect(
   mapStateToProps,
-  //mapDispatchToProps
+  mapDispatchToProps
   )(FinalFork);
 
 export default ConnectedFinalForkApp;
