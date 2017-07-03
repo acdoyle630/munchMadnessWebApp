@@ -8,33 +8,39 @@ const initialState = {
     first: {},
     second: {},
     third: {},
-    fourth: {}
+    fourth: {},
+    current : "one"
 };
 
 const contenders = (state = initialState, action) =>{
-  console.log(state);
   switch(action.type){
     case LOAD_CONTENDERS:
-    if(initialState.fourth === {} && initialState.first !== {} && initialState.second !== {} && initialState.second !== {}){
-    console.log(JSON.parse(action.contenders.result));
-    return Object.assign({}, state, {
-      fourth : (JSON.parse(action.contenders.result))
-    });
-    }
-    if(initialState.third === {} && initialState.first !== {} && initialState.second !== {}){
-      return Object.assign({}, state, {
-      third : (JSON.parse(action.contenders.result))
-    });
-    }
-    if(initialState.second === {} && initialState.first !== {}){
-      return Object.assign({}, state, {
-      second : (JSON.parse(action.contenders.result))
-    });
-    }
-    if(initialState.first == {}){
-      return Object.assign({}, state, {
-      first : (JSON.parse(action.contenders.result))
-    });
+      if(state.current === "one"){
+        return Object.assign({}, state, {
+        first : (JSON.parse(action.contenders.result)),
+        current : "two"
+      });
+      }
+      if(state.current === "two"){
+        return Object.assign({}, state, {
+        second : (JSON.parse(action.contenders.result)),
+        current : "three"
+      });
+      }
+      if(state.current === "three"){
+        return Object.assign({}, state, {
+        third : (JSON.parse(action.contenders.result)),
+        current : "four"
+      });
+      }
+      if(state.current === "four"){
+        return Object.assign({}, state, {
+        fourth : (JSON.parse(action.contenders.result)),
+        current : "done"
+      });
+      }
+      if(state.current === "done"){
+        break;
     }
 
     default : return state;

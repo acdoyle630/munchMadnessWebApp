@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles.css';
-import { loadContenders } from '../../action';
 import { connect } from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
-class eliteAte extends Component {
+class EliteAte extends Component {
   constructor(props) {
     super(props);
 
@@ -19,6 +18,7 @@ class eliteAte extends Component {
 
   }
   render(){
+    console.log(this.props.contenders);
     return (
       <div className="App">
         <div className="App-header">
@@ -32,18 +32,24 @@ class eliteAte extends Component {
             </button>
           </form>
         </div>
-        <div id ='choices'>
-          <div id = "first">
-          {this.state.first}
+        <div className ='eliteChoices'>
+          <div className = 'left'>
+            <div className = "first">
+            {this.props.contenders.first.name}
+            </div>
+            <p>VS</p>
+            <div className = "second">
+            {this.props.contenders.second.name}
+            </div>
           </div>
-          <div id = "second">
-          {this.state.second}
-          </div>
-          <div id = "third">
-          {this.state.third}
-          </div>
-          <div id = "fourth">
-          {this.state.fourth}
+          <div className = 'right'>
+            <div className = "third">
+            {this.props.contenders.third.name}
+            </div>
+            <p>VS</p>
+            <div className = "fourth">
+            {this.props.contenders.fourth.name}
+            </div>
           </div>
         </div>
       </div>
@@ -52,4 +58,23 @@ class eliteAte extends Component {
 }
 
 
-export default eliteAte;
+const mapStateToProps = (state) => {
+  return {
+    contenders : state.restaurants
+  };
+}
+
+/*const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    loadContenders : contenders => {
+      dispatch(loadContenders(contenders))
+    }
+  }
+}*/
+
+const ConnectedEliteAteApp = connect(
+  mapStateToProps,
+  //mapDispatchToProps
+  )(EliteAte);
+
+export default ConnectedEliteAteApp;

@@ -74,6 +74,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.props.contenders);
     if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== ""){
       return(
         <Redirect to={{
@@ -81,8 +82,6 @@ class App extends Component {
         }} />
         )
     }
-    console.log(this.props.contenders)
-    console.log(this.state)
     return (
       <div className="App">
         <div className="App-header">
@@ -96,17 +95,17 @@ class App extends Component {
             </button>
           </form>
         </div>
-        <div id ='choices'>
-          <div id = "first">
+        <div className ='choices'>
+          <div className = "first">
           {this.state.first}
           </div>
-          <div id = "second">
+          <div className = "second">
           {this.state.second}
           </div>
-          <div id = "third">
+          <div className = "third">
           {this.state.third}
           </div>
-          <div id = "fourth">
+          <div className = "fourth">
           {this.state.fourth}
           </div>
         </div>

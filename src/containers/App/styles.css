@@ -18,6 +18,42 @@
   font-size: large;
 }
 
+.choices{
+  display : flex;
+  flex-direction: column;
+  background-color: blue;
+}
+
+.eliteChoices{
+  display : flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.first {
+  font-size: 32px;
+  padding: 50px;
+  background-color: red;
+}
+
+.second {
+  font-size: 32px;
+  padding: 50px;
+  background-color: blue;
+}
+
+.third {
+  font-size: 32px;
+  padding: 50px;
+  background-color: green;
+}
+
+.fourth {
+  font-size: 32px;
+  padding: 50px;
+  background-color: yellow;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
