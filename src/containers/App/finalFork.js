@@ -63,16 +63,16 @@ class FinalFork extends Component {
             <div className = "first" onClick={this.chooseFirst}>
             {this.props.contenders.first.name}
             </div>
-            <p>VS</p>
+            <p id = "vsLeft">VS</p>
             <div className = "second" onClick={this.chooseSecond}>
             {this.props.contenders.second.name}
             </div>
           </div>
           <div id = 'forkMiddle'>
-            <div id ='nothing'></div>
             <div id = 'forkLeftChamp'>
             {this.props.winners.leftChamp.name}
             </div>
+            <p>VS</p>
             <div id = 'forkRightChamp'>
             {this.props.winners.rightChamp.name}
             </div>
@@ -81,7 +81,7 @@ class FinalFork extends Component {
             <div className = "third" onClick={this.chooseThird}>
             {this.props.contenders.third.name}
             </div>
-            <p>VS</p>
+            <p id = "vsRight">VS</p>
             <div className = "fourth" onClick={this.chooseFourth}>
             {this.props.contenders.fourth.name}
             </div>

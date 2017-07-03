@@ -60,6 +60,14 @@
   border-left: solid black 5px;
 }
 
+#vsLeft{
+  border-right: solid black 5px;
+}
+
+#vsRight{
+  border-left: solid black 5px;
+}
+
 #forkMiddle{
   display: flex;
   justify-content: space-around;
@@ -67,7 +75,6 @@
 
 #forkLeftChamp{
   background-color: pink;
-  align-content: center;
   padding: 50px;
   font-size: 32px;
 }
@@ -76,6 +83,11 @@
   background-color: orange;
   padding: 50px;
   font-size: 32px;
+}
+
+#nothing{
+  background-color: purple;
+  height: 20px;
 }
 
 
