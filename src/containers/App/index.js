@@ -33,25 +33,33 @@ class App extends Component {
 
   searchYelp(restaurant){
     console.log(restaurant)
-     return fetch('/api', {
-      method: "POST",
-      credentials: 'include',
-        headers:
-        {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(restaurant)
-      }).then(response =>{
-        return(response.json())
-      }).then(data => {
-        this.generateBracket(data)
-      }).catch(err => {
-        throw err;
-      })
+    if(this.state.searchBar === ""){
+      alert('enter search critera')
+    }
+    else{
+       return fetch('/api', {
+        method: "POST",
+        credentials: 'include',
+          headers:
+          {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(restaurant)
+        }).then(response =>{
+          return(response.json())
+        }).then(data => {
+          this.generateBracket(data)
+        }).catch(err => {
+          throw err;
+        })
+      }
     }
 
   generateBracket(data){
+    this.setState({
+      searchBar : ""
+    })
     let choice = JSON.parse(data.result)
     choice.id = this.state.id
     this.props.loadContenders(choice)
