@@ -49,6 +49,7 @@ class FinalFork extends Component {
   }
 
   render(){
+    console.log(this.props.contenders)
     if(this.state.champsChosen === true){
       return(
         <Redirect to={{
@@ -76,29 +77,77 @@ class FinalFork extends Component {
         <div className ='forkChoices'>
           <div className = 'left'>
             <div className = "first" onClick={this.chooseFirst}>
-            {this.props.contenders.first.name}
+              <div className = 'contenderName'>
+                {this.props.contenders.first.name}
+              </div>
+              <div className = 'contenderPrice'>
+                {this.props.contenders.first.price}
+              </div>
+              <div className = 'contenderStars'>
+                {this.props.contenders.first.rating} Stars
+              </div>
             </div>
             <p id = "vsLeft">VS</p>
             <div className = "second" onClick={this.chooseSecond}>
-            {this.props.contenders.second.name}
+              <div className = 'contenderName'>
+                {this.props.contenders.second.name}
+              </div>
+              <div className = 'contenderPrice'>
+                {this.props.contenders.second.price}
+              </div>
+              <div className = 'contenderStars'>
+                {this.props.contenders.second.rating} Stars
+              </div>
             </div>
           </div>
           <div id = 'forkMiddle'>
             <div id = 'forkLeftChamp'>
-            {this.props.winners.leftChamp.name}
+              <div className = 'contenderName'>
+                {this.props.winners.leftChamp.name}
+              </div>
+              <div className = 'contenderPrice'>
+                {this.props.winners.leftChamp.price}
+              </div>
+              <div className = 'contenderStars'>
+                {this.props.winners.leftChamp.rating} Stars
+              </div>
             </div>
             <p>VS</p>
             <div id = 'forkRightChamp'>
-            {this.props.winners.rightChamp.name}
+              <div className = 'contenderName'>
+                {this.props.winners.rightChamp.name}
+              </div>
+              <div className = 'contenderPrice'>
+                {this.props.winners.rightChamp.price}
+              </div>
+              <div className = 'contenderStars'>
+                {this.props.winners.rightChamp.rating} Stars
+              </div>
             </div>
           </div>
           <div className = 'right'>
             <div className = "third" onClick={this.chooseThird}>
-            {this.props.contenders.third.name}
+              <div className = 'contenderName'>
+                {this.props.contenders.third.name}
+              </div>
+              <div className = 'contenderPrice'>
+                {this.props.contenders.third.price}
+              </div>
+              <div className = 'contenderStars'>
+                {this.props.contenders.third.rating} Stars
+              </div>
             </div>
             <p id = "vsRight">VS</p>
             <div className = "fourth" onClick={this.chooseFourth}>
-            {this.props.contenders.fourth.name}
+              <div className = 'contenderName'>
+                {this.props.contenders.fourth.name}
+              </div>
+              <div className = 'contenderPrice'>
+                {this.props.contenders.fourth.price}
+              </div>
+              <div className = 'contenderStars'>
+                {this.props.contenders.fourth.rating} Stars
+              </div>
             </div>
           </div>
         </div>

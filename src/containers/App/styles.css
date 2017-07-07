@@ -60,6 +60,14 @@
   border-left: solid black 5px;
 }
 
+.contenderPrice{
+  font-size: 20px;
+}
+
+.contenderStars{
+  font-size: 20px;
+}
+
 #vsLeft{
   border-right: solid black 5px;
 }
