@@ -38,7 +38,7 @@ function searchYelp (serachCriteria)  {
 Router.post('/', ( req, res ) =>{
   searchYelp({
     term : req.body.searchBar,
-    location: "Honolulu, HI"
+    location: req.body.searchLocation
   });
   waitForIt();
   function waitForIt(){

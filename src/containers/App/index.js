@@ -15,6 +15,7 @@ class App extends Component {
       third : "",
       fourth : "",
       searchBar : "",
+      searchLocation : "",
       id : 1
     }
 
@@ -26,6 +27,12 @@ class App extends Component {
     });
   }
 
+  handleSearhLocationChange = (event) => {
+    this.setState ({
+      searchLocation : event.target.value
+    });
+  }
+
   handleSearchSubmit = (event) => {
     event.preventDefault();
     this.searchYelp(this.state);
@@ -33,7 +40,7 @@ class App extends Component {
 
   searchYelp(restaurant){
     console.log(restaurant)
-    if(this.state.searchBar === ""){
+    if(this.state.searchBar === "" || this.state.searchLocation === ""){
       alert('enter search critera')
     }
     else{
@@ -97,7 +104,8 @@ class App extends Component {
         </div>
         <div className="App-intro">
           <form onSubmit ={this.handleSearchSubmit}>
-            <input type = "text" value = {this.state.searchBar} onChange = {this.handleSearchChange} />
+            <input type = "text" placeholder ="type" value = {this.state.searchBar} onChange = {this.handleSearchChange} />
+            <input type = "text" placeholder = "location city/zip" value = {this.state.searchLocation} onChange = {this.handleSearhLocationChange} />
             <button type = "submit"> Find me food
             </button>
           </form>
