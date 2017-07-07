@@ -2,6 +2,7 @@
 
 export const LOAD_CONTENDERS = "LOAD_CONTENDERS";
 export const LOAD_CHAMPIONDISH = "LOAD_CHAMPIONDISH";
+export const LOAD_WINNER = "LOAD_WINNER";
 
 export const loadContenders = contenders =>{
   console.log('hitting action');
@@ -17,3 +18,11 @@ export const loadChampionDish = contenders  =>{
     contenders
   };
 };
+
+export const loadWinner = winner =>{
+  return{
+    type : LOAD_WINNER,
+    winner
+  };
+};
+
