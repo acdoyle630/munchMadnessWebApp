@@ -68,6 +68,10 @@
   font-size: 20px;
 }
 
+.contenderName{
+  font-size: 32px;
+}
+
 #vsLeft{
   border-right: solid black 5px;
 }
