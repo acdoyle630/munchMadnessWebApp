@@ -20,18 +20,44 @@ class ChampionDish extends Component {
 
   }
   render(){
+    console.log(this.props.winners)
     return (
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <h2>ChampionDish</h2>
           </div>
-          <div className="App-intro">
-              <button onClick = {this.goToChampiondish}> Championship!
-              </button>
+          <div id = 'championship'>
+            <div id = 'leftychamp'>
+            {this.props.winners.leftChamp.name}
+            </div>
+            <p>VS</p>
+            <div id = 'rightychamp'>
+            {this.props.winners.rightChamp.name}
+            </div>
           </div>
+
         </div>
       )}
     }
 
-    export default ChampionDish;
+const mapStateToProps = (state) => {
+  return {
+    winners : state.championDish
+  };
+}
+
+/*const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    loadChampionDish : contenders => {
+      dispatch(loadChampionDish(contenders))
+    }
+  }
+}
+*/
+const ConnectedChampionDishApp = connect(
+  mapStateToProps,
+  //mapDispatchToProps
+  )(ChampionDish);
+
+export default ConnectedChampionDishApp;

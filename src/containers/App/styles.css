@@ -90,6 +90,23 @@
   height: 20px;
 }
 
+#championship{
+  display: flex;
+  justify-content: center;
+}
+
+#leftychamp{
+  background-color: green;
+  padding: 50px;
+  font-size: 32px;
+}
+
+#rightychamp{
+  background-color: purple;
+  padding: 50px;
+  font-size: 32px;
+}
+
 
 
 @keyframes App-logo-spin {
