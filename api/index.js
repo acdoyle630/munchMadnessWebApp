@@ -15,7 +15,7 @@ const searchRequest = {
 };
 
 function searchYelp (serachCriteria)  {
-  usedNumers =[];
+  usedNumbers =[];
   paused = true;
   console.log('searching');
   return yelp.accessToken(clientId, clientSecret).then(response => {
@@ -24,11 +24,19 @@ function searchYelp (serachCriteria)  {
     client.search(serachCriteria).then(response => {
       const resultLength = response.jsonBody.businesses.length;
       let resultNumber = Math.floor(Math.random() * resultLength);
-      const firstResult = response.jsonBody.businesses[resultNumber];
-      const prettyJson = JSON.stringify(firstResult, null, 4);
-      result = prettyJson;
-      console.log(result);
-      paused = false;
+      if(usedNumbers.indexOf(resultNumber) < 0){
+        if(usedNumbers.indexOf(resultNumber));
+        const firstResult = response.jsonBody.businesses[resultNumber];
+        const prettyJson = JSON.stringify(firstResult, null, 4);
+        result = prettyJson;
+        console.log(result);
+        paused = false;
+      } else {
+        searchYelp({
+          term : req.body.searchBar,
+          location: req.body.searchLocation
+        });
+      }
     });
   }).catch(e => {
     console.log(e);

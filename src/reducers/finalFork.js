@@ -38,9 +38,7 @@ const contenders = (state = initialState, action) =>{
         fourth : (action.contenders),
         current : "done"
       });
-      }
-      if(state.current === "done"){
-        break;
+
     }
 
     default : return state;
