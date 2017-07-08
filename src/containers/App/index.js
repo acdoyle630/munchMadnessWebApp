@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles.css';
-import { loadContenders } from '../../action';
+import { loadMyLocation } from '../../action';
 import { connect } from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
@@ -10,9 +10,21 @@ class App extends Component {
     super(props);
 
     this.state = {
-      newGame : false
+      newGame : false,
+      searchLocation : ""
     }
 
+  }
+
+  startGame = () =>{
+    this.props.loadMyLocation(this.state.searchLocation)
+    this.play();
+  }
+
+  handleSearhLocationChange = (event) => {
+    this.setState ({
+      searchLocation : event.target.value
+    });
   }
 
   play = () => {
@@ -26,6 +38,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.props.myLocation)
     if(this.state.newGame === true){
       return(
         <Redirect to={{
@@ -40,9 +53,12 @@ class App extends Component {
           <h2>Munch Madness</h2>
         </div>
         <div className="App-intro">
-          <button onClick = {this.play}>
-            PLAY NEW GAME!
-          </button>
+          <form onSubmit = {this.startGame}>
+            <input type = "text" placeholder = "location city/zip" value = {this.state.searchLocation} onChange = {this.handleSearhLocationChange} />
+            <button type = 'submit'>
+              Start New Game
+            </button>
+          </form>
         </div>
 
       </div>
@@ -50,10 +66,23 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    myLocation : state.myLocation
+  };
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    loadMyLocation : myLocation => {
+      dispatch(loadMyLocation(myLocation))
+    }
+  }
+}
 
 const ConnectedLandingApp = connect(
-  //mapStateToProps,
- // mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
   )(App);
 
 export default ConnectedLandingApp;

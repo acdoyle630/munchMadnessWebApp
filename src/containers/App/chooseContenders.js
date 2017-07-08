@@ -15,7 +15,7 @@ class ChooseContenders extends Component {
       third : "",
       fourth : "",
       searchBar : "",
-      searchLocation : "",
+      searchLocation : this.props.myLocation.myLocation,
       id : 1
     }
 
@@ -27,11 +27,11 @@ class ChooseContenders extends Component {
     });
   }
 
-  handleSearhLocationChange = (event) => {
+  /*handleSearhLocationChange = (event) => {
     this.setState ({
       searchLocation : event.target.value
     });
-  }
+  }*/
 
   handleSearchSubmit = (event) => {
     event.preventDefault();
@@ -39,8 +39,9 @@ class ChooseContenders extends Component {
   }
 
   searchYelp(restaurant){
+    console.log(this.props.myLocation)
     console.log(restaurant)
-    if(this.state.searchBar === "" || this.state.searchLocation === ""){
+    if(this.state.searchBar === ""){
       alert('enter search critera')
     }
     else{
@@ -100,12 +101,11 @@ class ChooseContenders extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Munch Madness</h2>
+          <h2>Choose Your Contenders</h2>
         </div>
         <div className="App-intro">
           <form onSubmit ={this.handleSearchSubmit}>
             <input type = "text" placeholder ="type" value = {this.state.searchBar} onChange = {this.handleSearchChange} />
-            <input type = "text" placeholder = "location city/zip" value = {this.state.searchLocation} onChange = {this.handleSearhLocationChange} />
             <button type = "submit"> Find me food
             </button>
           </form>
@@ -131,7 +131,8 @@ class ChooseContenders extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    contenders : state.finalFork
+    contenders : state.finalFork,
+    myLocation : state.myLocation
   };
 }
 
