@@ -27,12 +27,6 @@ class ChooseContenders extends Component {
     });
   }
 
-  /*handleSearhLocationChange = (event) => {
-    this.setState ({
-      searchLocation : event.target.value
-    });
-  }*/
-
   handleSearchSubmit = (event) => {
     event.preventDefault();
     this.searchYelp(this.state);
@@ -65,31 +59,44 @@ class ChooseContenders extends Component {
     }
 
   generateBracket(data){
+    console.log(data)
     this.setState({
       searchBar : ""
     })
-    let choice = JSON.parse(data.result)
-    choice.id = this.state.id
-    this.props.loadContenders(choice)
-    this.state.id++
-    if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth === ""){
-      this.setState({fourth: choice.name})
+    if(data.result === undefined){
+      alert('no matches for your search critera')
     }
-    if(this.state.first !== "" && this.state.second !== "" && this.state.third === ""){
-      this.setState({third: choice.name})
-    }
-    if(this.state.first !== "" && this.state.second === ""){
-      this.setState({second: choice.name})
-    }
-    if(this.state.first === ""){
-    this.setState({first: choice.name})
-    }
+    else{
+      let choice = JSON.parse(data.result)
+        choice.id = this.state.id
+        this.props.loadContenders(choice)
+        this.state.id++
+        if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth === ""){
+          this.setState({fourth: choice.name})
+        }
+        if(this.state.first !== "" && this.state.second !== "" && this.state.third === ""){
+          this.setState({third: choice.name})
+        }
+        if(this.state.first !== "" && this.state.second === ""){
+          this.setState({second: choice.name})
+        }
+        if(this.state.first === ""){
+        this.setState({first: choice.name})
+        }
+      }
   }
 
 
 
 
   render() {
+    if(this.props.myLocation.myLocation === ""){
+      return(
+        <Redirect to={{
+          pathname : '/'
+        }} />
+        )
+    }
     if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== ""){
       return(
         <Redirect to={{
