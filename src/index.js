@@ -12,6 +12,7 @@ import App from './containers/App';
 import finalFork from './containers/App/finalFork';
 import championDish from './containers/App/championDish';
 import winner from './containers/App/winner';
+import chooseContenders from './containers/App/chooseContenders';
 import './index.css';
 
 const store = createStore(
@@ -24,6 +25,7 @@ ReactDOM.render(
     <Router>
       <div>
         <Route exact path = "/" component={App}/>
+        <Route path = '/chooseContenders' component = {chooseContenders}/>
         <Route path = "/finalFork" component={finalFork}/>
         <Route path = '/championDish' component ={championDish} />
         <Route path = '/winner' component = {winner} />
