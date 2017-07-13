@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDom from 'react-dom';
+import Popup from 'react-popup';
 import logo from './logo.svg';
 import './styles.css';
 import { connect } from 'react-redux';
@@ -67,6 +69,14 @@ class FinalFork extends Component {
   }
 
   render(){
+    if(this.state.displayFirstNumber !== ''){
+
+
+
+
+
+
+    }
     console.log(this.props.contenders.first.display)
     if(this.state.champsChosen === true){
       return(
