@@ -15,7 +15,11 @@ class FinalFork extends Component {
       third : "",
       fourth : "",
       searchBar : "",
-      champsChosen : false
+      champsChosen : false,
+      displayFirstNumber : "",
+      displaySecond : false,
+      displayThird : false,
+      displayFourth : false
     }
 
   }
@@ -48,8 +52,22 @@ class FinalFork extends Component {
     this.props.loadChampionDish(this.props.contenders.fourth)
   }
 
+  statsFirst = (event) => {
+    event.preventDefault();
+    if(this.state.displayFirstNumber === ''){
+      console.log('hit first')
+      this.setState ({
+        displayFirstNumber : this.props.contenders.first.display_phone
+      });
+    } else {
+      this.setState({
+        displayFirstNumber : ''
+      });
+    }
+  }
+
   render(){
-    console.log(this.props.contenders)
+    console.log(this.props.contenders.first.display)
     if(this.state.champsChosen === true){
       return(
         <Redirect to={{
@@ -76,6 +94,8 @@ class FinalFork extends Component {
         </div>
         <div className ='forkChoices'>
           <div className = 'left'>
+          <button onClick ={this.statsFirst} > Details
+          </button>
             <div className = "first" onClick={this.chooseFirst}>
               <div className = 'contenderName'>
                 {this.props.contenders.first.name}
@@ -86,8 +106,26 @@ class FinalFork extends Component {
               <div className = 'contenderStars'>
                 {this.props.contenders.first.rating} Stars
               </div>
+              <div className = "contenderStats">
+                {this.state.displayFirstNumber}
+
+
+
+
+
+
+              </div>
             </div>
             <p id = "vsLeft">VS</p>
+            <div id = 'currentStats'>
+
+
+
+
+
+
+
+            </div>
             <div className = "second" onClick={this.chooseSecond}>
               <div className = 'contenderName'>
                 {this.props.contenders.second.name}

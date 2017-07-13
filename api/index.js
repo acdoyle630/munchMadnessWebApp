@@ -9,10 +9,7 @@ const clientSecret = client.clientSecret;
 let result = "";
 let paused = false;
 
-const searchRequest = {
-  term:'pizza',
-  location: 'long beach, CA'
-};
+
 
 function searchYelp (serachCriteria)  {
   usedNumbers =[];
@@ -61,10 +58,6 @@ Router.post('/', ( req, res ) =>{
         }
   }
 });
-
-
-    // console.log(result);
-    // res.send({result});
 
 
 
