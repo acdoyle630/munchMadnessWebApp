@@ -19,9 +19,17 @@ class FinalFork extends Component {
       searchBar : "",
       champsChosen : false,
       displayFirstNumber : "",
-      displaySecond : false,
-      displayThird : false,
-      displayFourth : false
+      displayFirstPrice : "",
+      displayFirstStars : "",
+      displaySecondNumber : "",
+      displaySecondPrice : "",
+      displaySecondStars : "",
+      displayThirdNumber : "",
+      displayThirdPrice : "",
+      displayThirdStars : "",
+      displayFourthNumber : "",
+      displayFourthPrice : "",
+      displayFourthStars : ""
     }
 
   }
@@ -59,25 +67,76 @@ class FinalFork extends Component {
     if(this.state.displayFirstNumber === ''){
       console.log('hit first')
       this.setState ({
-        displayFirstNumber : this.props.contenders.first.display_phone
+        displayFirstNumber : `Phone Number : ${this.props.contenders.first.display_phone}`,
+        displayFirstPrice : `Price : ${this.props.contenders.first.price}`,
+        displayFirstStars : `Stars : ${this.props.contenders.first.rating}`
       });
     } else {
       this.setState({
-        displayFirstNumber : ''
+        displayFirstNumber : '',
+        displayFirstPrice : '',
+        displayFirstStars : ''
+      });
+    }
+  }
+
+  statsSecond = (event) => {
+    event.preventDefault();
+    if(this.state.displaySecondNumber === ''){
+      console.log('hit second')
+      this.setState ({
+        displaySecondNumber : `Phone Number : ${this.props.contenders.second.display_phone}`,
+        displaySecondPrice : `Price : ${this.props.contenders.second.price}`,
+        displaySecondStars : `Stars : ${this.props.contenders.second.rating}`
+      });
+    } else {
+      this.setState({
+        displaySecondNumber : '',
+        displaySecondPrice : '',
+        displaySecondStars : ''
+      });
+    }
+  }
+
+   statsThird = (event) => {
+    event.preventDefault();
+    if(this.state.displayThirdNumber === ''){
+      console.log('hit third')
+      this.setState ({
+        displayThirdNumber : `Phone Number : ${this.props.contenders.third.display_phone}`,
+        displayThirdPrice : `Price : ${this.props.contenders.third.price}`,
+        displayThirdStars : `Stars : ${this.props.contenders.third.rating}`
+      });
+    } else {
+      this.setState({
+        displayThirdNumber : '',
+        displayThirdPrice : '',
+        displayThirdStars : ''
+      });
+    }
+  }
+
+  statsFourth = (event) => {
+    event.preventDefault();
+    if(this.state.displayFourthNumber === ''){
+      console.log('hit fourth')
+      this.setState ({
+        displayFourthNumber : `Phone Number : ${this.props.contenders.fourth.display_phone}`,
+        displayFourthPrice : `Price : ${this.props.contenders.fourth.price}`,
+        displayFourthStars : `Stars : ${this.props.contenders.fourth.rating}`
+      });
+    } else {
+      this.setState({
+        displayFourthNumber : '',
+        displayFourthPrice : '',
+        displayFourthStars : ''
       });
     }
   }
 
   render(){
-    if(this.state.displayFirstNumber !== ''){
 
-
-
-
-
-
-    }
-    console.log(this.props.contenders.first.display)
+    console.log(this.props.contenders.first)
     if(this.state.champsChosen === true){
       return(
         <Redirect to={{
@@ -110,41 +169,32 @@ class FinalFork extends Component {
               <div className = 'contenderName'>
                 {this.props.contenders.first.name}
               </div>
-              <div className = 'contenderPrice'>
-                {this.props.contenders.first.price}
+              <div className = 'contenderStats'>
+                {this.state.displayFirstPrice}
               </div>
-              <div className = 'contenderStars'>
-                {this.props.contenders.first.rating} Stars
+              <div className = 'contenderStats'>
+                {this.state.displayFirstStars}
               </div>
               <div className = "contenderStats">
                 {this.state.displayFirstNumber}
-
-
-
-
-
-
               </div>
             </div>
             <p id = "vsLeft">VS</p>
-            <div id = 'currentStats'>
-
-
-
-
-
-
-
-            </div>
+            <button onClick = {this.statsSecond}>
+            Details
+            </button>
             <div className = "second" onClick={this.chooseSecond}>
               <div className = 'contenderName'>
                 {this.props.contenders.second.name}
               </div>
-              <div className = 'contenderPrice'>
-                {this.props.contenders.second.price}
+              <div className = 'contenderStats'>
+                {this.state.displaySecondPrice}
               </div>
-              <div className = 'contenderStars'>
-                {this.props.contenders.second.rating} Stars
+              <div className = 'contenderStats'>
+                {this.state.displaySecondStars}
+              </div>
+              <div className = "contenderStats">
+                {this.state.displaySecondNumber}
               </div>
             </div>
           </div>
@@ -157,7 +207,7 @@ class FinalFork extends Component {
                 {this.props.winners.leftChamp.price}
               </div>
               <div className = 'contenderStars'>
-                {this.props.winners.leftChamp.rating} Stars
+                {this.props.winners.leftChamp.rating}
               </div>
             </div>
             <p>VS</p>
@@ -169,33 +219,47 @@ class FinalFork extends Component {
                 {this.props.winners.rightChamp.price}
               </div>
               <div className = 'contenderStars'>
-                {this.props.winners.rightChamp.rating} Stars
+                {this.props.winners.rightChamp.rating}
               </div>
             </div>
           </div>
           <div className = 'right'>
+           <button onClick = {this.statsThird}>
+            Details
+            </button>
             <div className = "third" onClick={this.chooseThird}>
               <div className = 'contenderName'>
                 {this.props.contenders.third.name}
               </div>
-              <div className = 'contenderPrice'>
-                {this.props.contenders.third.price}
+              <div className = 'contenderStats'>
+                {this.state.displayThirdPrice}
               </div>
-              <div className = 'contenderStars'>
-                {this.props.contenders.third.rating} Stars
+              <div className = 'contenderStats'>
+                {this.state.displayThirdStars}
+              </div>
+              <div className = "contenderStats">
+                {this.state.displayThirdNumber}
               </div>
             </div>
             <p id = "vsRight">VS</p>
+             <button onClick = {this.statsFourth}>
+            Details
+            </button>
             <div className = "fourth" onClick={this.chooseFourth}>
               <div className = 'contenderName'>
                 {this.props.contenders.fourth.name}
               </div>
-              <div className = 'contenderPrice'>
-                {this.props.contenders.fourth.price}
+              <div className = 'contenderStats'>
+                {this.state.displayFourthPrice}
               </div>
-              <div className = 'contenderStars'>
-                {this.props.contenders.fourth.rating} Stars
+              <div className = 'contenderStats'>
+                {this.state.displayFourthStars}
               </div>
+                <div className = "contenderStats">
+                {this.state.displayFourthNumber}
+              </div>
+
+
             </div>
           </div>
         </div>

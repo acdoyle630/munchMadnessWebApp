@@ -31,14 +31,14 @@
 }
 
 .first {
-  font-size: 32px;
+  font-size: 22px;
   padding: 50px;
   background-color: red;
   border-bottom: solid black 5px;
 }
 
 .second {
-  font-size: 32px;
+  font-size: 22px;
   padding: 50px;
   background-color: blue;
   border-bottom: solid black 5px;
@@ -46,14 +46,14 @@
 }
 
 .third {
-  font-size: 32px;
+  font-size: 22px;
   padding: 50px;
   background-color: green;
   border-bottom: solid black 5px;
 }
 
 .fourth {
-  font-size: 32px;
+  font-size: 22px;
   padding: 50px;
   background-color: yellow;
   border-bottom: solid black 5px;
@@ -69,9 +69,12 @@
 }
 
 .contenderName{
-  font-size: 32px;
+  font-size: 22px;
 }
 
+.contenderStats{
+  font-size: 12px;
+}
 #vsLeft{
   border-right: solid black 5px;
 }
@@ -94,7 +97,7 @@
 #forkRightChamp{
   background-color: orange;
   padding: 50px;
-  font-size: 32px;
+  font-size: 22px;
 }
 
 #nothing{
@@ -110,13 +113,13 @@
 #leftychamp{
   background-color: green;
   padding: 50px;
-  font-size: 32px;
+  font-size: 22px;
 }
 
 #rightychamp{
   background-color: purple;
   padding: 50px;
-  font-size: 32px;
+  font-size: 22px;
 }
 
 
