@@ -90,6 +90,7 @@ class ChooseContenders extends Component {
 
 
   render() {
+    console.log(this.props.myPrice)
     if(this.props.myLocation.myLocation === ""){
       return(
         <Redirect to={{
@@ -139,7 +140,8 @@ class ChooseContenders extends Component {
 const mapStateToProps = (state) => {
   return {
     contenders : state.finalFork,
-    myLocation : state.myLocation
+    myLocation : state.myLocation,
+    myPrice : state.myPrice
   };
 }
 

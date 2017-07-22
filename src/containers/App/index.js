@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles.css';
-import { loadMyLocation } from '../../action';
+import { loadMyLocation, loadMyPrice } from '../../action';
 import { connect } from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
@@ -11,13 +11,15 @@ class App extends Component {
 
     this.state = {
       newGame : false,
-      searchLocation : ""
+      searchLocation : "",
+      price : "1,2,3,4"
     }
 
   }
 
   startGame = () =>{
     this.props.loadMyLocation(this.state.searchLocation)
+    this.props.loadMyPrice(this.state.price)
     this.play();
   }
 
@@ -27,11 +29,27 @@ class App extends Component {
     });
   }
 
+  handleDollarChange = (event) =>{
+    let priceNum = (Number(event.target.value))
+    let priceRange = []
+    let priceString = ''
+    for (var i = 1; i <= priceNum; i++){
+      priceRange.push(i);
+    }
+
+    priceString = priceRange.join()
+    this.setState({
+      price : priceString
+    })
+  }
+
   play = () => {
     this.setState({
       newGame : true
     });
   }
+
+
 
 
 
@@ -55,10 +73,11 @@ class App extends Component {
         <div className="App-intro">
           <form onSubmit = {this.startGame}>
             <input type = "text" placeholder = "location city/zip" value = {this.state.searchLocation} onChange = {this.handleSearhLocationChange} />
-            <select name = "dollarSigns">
-              <option value="one">$</option>
-              <option value="two">$$</option>
-              <option value="three">$$$</option>
+            <select name = "dollarSigns" onChange = {this.handleDollarChange}>
+              <option value="1">$</option>
+              <option value="2">$$</option>
+              <option value="3">$$$</option>
+              <option value="4">$$$$</option>
             </select>
             <button type = 'submit'>
               Start New Game
@@ -81,6 +100,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     loadMyLocation : myLocation => {
       dispatch(loadMyLocation(myLocation))
+    },
+    loadMyPrice : myPrice => {
+      dispatch(loadMyPrice(myPrice))
     }
   }
 }
