@@ -12,6 +12,7 @@ let paused = false;
 
 
 function searchYelp (serachCriteria)  {
+  console.log(serachCriteria)
   usedNumbers =[];
   paused = true;
   console.log('searching');
@@ -31,7 +32,7 @@ function searchYelp (serachCriteria)  {
       } else {
         searchYelp({
           term : req.body.searchBar,
-          location: req.body.searchLocation
+          location: req.body.searchLocation,
         });
       }
     });
@@ -45,7 +46,8 @@ function searchYelp (serachCriteria)  {
 Router.post('/', ( req, res ) =>{
   searchYelp({
     term : req.body.searchBar,
-    location: req.body.searchLocation
+    location: req.body.searchLocation,
+    price : '1'
   });
   waitForIt();
   function waitForIt(){
