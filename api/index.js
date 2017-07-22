@@ -47,7 +47,7 @@ Router.post('/', ( req, res ) =>{
   searchYelp({
     term : req.body.searchBar,
     location: req.body.searchLocation,
-    price : '1'
+    price : req.body.searchPrice
   });
   waitForIt();
   function waitForIt(){

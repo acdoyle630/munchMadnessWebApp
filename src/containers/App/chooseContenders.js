@@ -16,6 +16,7 @@ class ChooseContenders extends Component {
       fourth : "",
       searchBar : "",
       searchLocation : this.props.myLocation.myLocation,
+      searchPrice : this.props.myPrice.myPrice,
       id : 1
     }
 

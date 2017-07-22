@@ -74,6 +74,7 @@ class App extends Component {
           <form onSubmit = {this.startGame}>
             <input type = "text" placeholder = "location city/zip" value = {this.state.searchLocation} onChange = {this.handleSearhLocationChange} />
             <select name = "dollarSigns" onChange = {this.handleDollarChange}>
+              <option> Any Price </option>
               <option value="1">$</option>
               <option value="2">$$</option>
               <option value="3">$$$</option>
