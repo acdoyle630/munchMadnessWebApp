@@ -75,6 +75,18 @@
 .contenderStats{
   font-size: 12px;
 }
+
+.winnerName {
+  font-size: 60px;
+  background-color: gold;
+}
+
+.winnerStats {
+  font-size: 32px;
+  background-color: gold;
+}
+
+
 #vsLeft{
   border-right: solid black 5px;
 }

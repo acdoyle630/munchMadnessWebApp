@@ -27,19 +27,19 @@ class Winner extends Component {
           <h2>Your Champion</h2>
         </div>
         <div id = "winnerDetails">
-          <div className = 'contenderName'>
+          <div className = 'winnerName'>
             {this.props.champ.champWinner.name}
           </div>
-          <div className = 'contenderPrice'>
+          <div className = 'winnerStats'>
             {this.props.champ.champWinner.price}
           </div>
-          <div className = 'contenderStars'>
+          <div className = 'winnerStats'>
             {this.props.champ.champWinner.rating}
           </div>
-          <div className = 'contenderPhone'>
+          <div className = 'winnerStats'>
             {this.props.champ.champWinner.display_phone}
           </div>
-          <div className = 'contenderUrl'>
+          <div className = 'winnerStats'>
             {this.props.champ.champWinner.url}
           </div>
         </div>
