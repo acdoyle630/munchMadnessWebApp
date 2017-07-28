@@ -14,6 +14,18 @@ class ChooseContenders extends Component {
       second : "",
       third : "",
       fourth : "",
+      fifth : "",
+      sixth : "",
+      seventh : "",
+      eighth : "",
+      ninth : "",
+      tenth : "",
+      eleventh : "",
+      twelth : "",
+      thirteenth : "",
+      forteenth : "",
+      fifthteenth : "",
+      sixthteenth : "",
       searchBar : "",
       searchLocation : this.props.myLocation.myLocation,
       searchPrice : this.props.myPrice.myPrice,
@@ -72,6 +84,19 @@ class ChooseContenders extends Component {
         choice.id = this.state.id
         this.props.loadContenders(choice)
         this.state.id++
+
+        if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== "" && this.state.fifth !== "" && this.state.sixth !== "" && this.state.seventh !== "" && this.state.eighth === ""){
+           this.setState({eighth: choice.name})
+        }
+        if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== "" && this.state.fifth !== "" && this.state.sixth !== "" && this.state.seventh === ""){
+           this.setState({seventh: choice.name})
+        }
+        if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== "" && this.state.fifth !== "" && this.state.sixth === ""){
+           this.setState({sixth: choice.name})
+        }
+        if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== "" && this.state.fifth === ""){
+           this.setState({fifth: choice.name})
+        }
         if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth === ""){
           this.setState({fourth: choice.name})
         }
@@ -99,7 +124,7 @@ class ChooseContenders extends Component {
         }} />
         )
     }
-    if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== ""){
+    if(this.state.first !== "" && this.state.second !== "" && this.state.third !== "" && this.state.fourth !== "" && this.props.round.round === 4){
       return(
         <Redirect to={{
           pathname : 'finalFork'
@@ -119,19 +144,35 @@ class ChooseContenders extends Component {
             </button>
           </form>
         </div>
-        <div className ='choices'>
-          <div className = "first">
-          {this.state.first}
-          </div>
-          <div className = "second">
-          {this.state.second}
-          </div>
-          <div className = "third">
-          {this.state.third}
-          </div>
-          <div className = "fourth">
-          {this.state.fourth}
-          </div>
+          <div id = 'allChoices'>
+            <div className ='choices'>
+              <div className = "contenders">
+              {this.state.first}
+              </div>
+              <div className = "contenders">
+              {this.state.third}
+              </div>
+              <div className = "contenders">
+              {this.state.fifth}
+              </div>
+              <div className = "contenders">
+              {this.state.seventh}
+              </div>
+            </div>
+            <div className = 'choices'>
+              <div className = "contenders">
+              {this.state.second}
+              </div>
+              <div className = "contenders">
+              {this.state.fourth}
+              </div>
+              <div className = "contenders">
+              {this.state.sixth}
+              </div>
+              <div className = "contenders">
+              {this.state.eighth}
+              </div>
+            </div>
         </div>
       </div>
     );
