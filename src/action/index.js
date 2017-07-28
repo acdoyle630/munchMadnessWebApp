@@ -5,6 +5,7 @@ export const LOAD_CHAMPIONDISH = "LOAD_CHAMPIONDISH";
 export const LOAD_WINNER = "LOAD_WINNER";
 export const LOAD_MY_LOCATION = 'LOAD_MY_LOCATION';
 export const LOAD_MY_PRICE = 'LOAD_MY_PRICE';
+export const PICK_ROUND = 'PICK_ROUND';
 
 export const loadContenders = contenders =>{
   console.log('hitting action');
@@ -35,11 +36,19 @@ export const loadMyLocation = myLocation =>{
   };
 };
 
-  export const loadMyPrice = myPrice =>{
-    console.log('hit price action')
+export const loadMyPrice = myPrice =>{
   return {
     type: LOAD_MY_PRICE,
     myPrice
   };
 };
+
+export const pickRound = round =>{
+  return{
+    type: PICK_ROUND,
+    round
+  };
+};
+
+
 

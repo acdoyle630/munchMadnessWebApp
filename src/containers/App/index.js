@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './styles.css';
-import { loadMyLocation, loadMyPrice } from '../../action';
+import { loadMyLocation, loadMyPrice, pickRound } from '../../action';
 import { connect } from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 
@@ -12,12 +12,14 @@ class App extends Component {
     this.state = {
       newGame : false,
       searchLocation : "",
-      price : "1,2,3,4"
+      price : "1,2,3,4",
+      numberOfTeams : 0
     }
 
   }
 
   startGame = () =>{
+    this.props.pickRound(this.state.numberOfTeams)
     this.props.loadMyLocation(this.state.searchLocation)
     this.props.loadMyPrice(this.state.price)
     this.play();
@@ -43,6 +45,12 @@ class App extends Component {
     })
   }
 
+  handleNuberOfTeamsChange = (event) =>{
+    this.setState({
+      numberOfTeams : Number(event.target.value)
+    })
+  }
+
   play = () => {
     this.setState({
       newGame : true
@@ -56,7 +64,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.props.myLocation)
+    console.log(this.state)
     if(this.state.newGame === true){
       return(
         <Redirect to={{
@@ -79,6 +87,12 @@ class App extends Component {
               <option value="2">$$</option>
               <option value="3">$$$</option>
               <option value="4">$$$$</option>
+            </select>
+            <select name ="numberOfTeams" onChange = {this.handleNuberOfTeamsChange}>
+              <option> Number of Teams</option>
+              <option value = '4' > Final Fork </option>
+              <option value = '8' > Elite Ate </option>
+              <option value = '16'> Sweet Sixteen </option>
             </select>
             <button type = 'submit'>
               Start New Game
@@ -104,6 +118,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     loadMyPrice : myPrice => {
       dispatch(loadMyPrice(myPrice))
+    },
+    pickRound : round =>{
+      dispatch(pickRound(round))
     }
   }
 }
